@@ -1046,7 +1046,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 272988507}
-  m_LocalRotation: {x: 0, y: 0, z: -0.8152269, w: 0.5791417}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9079707, w: 0.41903365}
   m_LocalPosition: {x: 0.27886915, y: -0.26282668, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1055,7 +1055,7 @@ Transform:
   - {fileID: 1825330879}
   m_Father: {fileID: 314928960}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -109.22}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -130.453}
 --- !u!114 &272988509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.3000002
+  m_Length: 0.30000013
   m_ChildTransform: {fileID: 2022878467}
   m_AttachedIK: {fileID: 790648083}
 --- !u!114 &272988510
@@ -1132,8 +1132,8 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0.27003413, y: 0.7553593, z: 0}
-  - {x: 0.5533135, y: 0.65660226, z: 0}
-  - {x: 0.62282217, y: 0.36476585, z: 0}
+  - {x: 0.49831647, y: 0.5607127, z: 0}
+  - {x: 0.6690004, y: 0.31400052, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -3013,15 +3013,15 @@ MonoBehaviour:
     m_SolverPoses:
     - m_BoneTransform: {fileID: 272988508}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.8152269, w: 0.5791417}
+      solverRotation: {x: 0, y: 0, z: -0.9079707, w: 0.41903365}
       defaultLocalRotation: {x: 0, y: 0, z: -0.8152271, w: 0.57914144}
     - m_BoneTransform: {fileID: 2022878467}
       solverPosition: {x: 0, y: 0, z: 0}
-      solverRotation: {x: 0, y: 0, z: -0.48009682, w: 0.8772155}
+      solverRotation: {x: 0, y: 0, z: -0.12940444, w: 0.9915919}
       defaultLocalRotation: {x: 0, y: 0, z: -0.48009646, w: 0.87721574}
     m_Weight: 1
     m_RestoreDefaultPose: 1
-    targetPosition: {x: 0.62282217, y: 0.3647658, z: 0}
+    targetPosition: {x: 0.669, y: 0.314, z: 0}
     flip: 1
 --- !u!1 &813794926
 GameObject:
@@ -3812,6 +3812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   face: {fileID: 899719901}
   anim: {fileID: 1024917050}
+  cam: {fileID: 519420034}
 --- !u!210 &1024917048
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -5479,8 +5480,8 @@ LineRenderer:
   m_SortingOrder: 2
   m_Positions:
   - {x: 0.27003413, y: 0.7553593, z: 0}
-  - {x: 0.5533135, y: 0.65660226, z: 0}
-  - {x: 0.62282217, y: 0.36476585, z: 0}
+  - {x: 0.49831647, y: 0.5607127, z: 0}
+  - {x: 0.6690004, y: 0.31400052, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -6036,14 +6037,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022878465}
-  m_LocalRotation: {x: 0, y: 0, z: -0.48009682, w: 0.8772155}
+  m_LocalRotation: {x: 0, y: 0, z: -0.12940446, w: 0.99159193}
   m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 272988508}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -57.383}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -14.87}
 --- !u!1 &2029441373
 GameObject:
   m_ObjectHideFlags: 0
