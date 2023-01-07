@@ -44,4 +44,9 @@ public class Plant : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public int GetWordLength()
+    {
+        return word.Length;
+    }
 }

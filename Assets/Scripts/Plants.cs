@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
+using TMPro;
 using UnityEngine;
 
 public class Plants : MonoBehaviour
@@ -11,6 +13,8 @@ public class Plants : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Plant plantPrefab;
     [SerializeField] private WordDictionary words;
+    [SerializeField] private TMP_Text plantCount;
+    [SerializeField] private ScoreDisplay scoreDisplay;
 
     private readonly List<Plant> plants = new();
 
@@ -20,14 +24,17 @@ public class Plants : MonoBehaviour
         SpawnPlant();
     }
 
-    private void Update ()
+    private void Update()
     {
         foreach (var letter in Input.inputString.Select(c => c.ToString().ToUpper()))
         {
             plants.ForEach(p => p.Fill(letter));
+            scoreDisplay.DecreaseMulti();
         }
         
         plants.RemoveAll(p => p.IsDone);
+
+        plantCount.text = $"PLANTS: {plants.Count}";
     }
 
     private void SpawnPlant()
@@ -43,7 +50,13 @@ public class Plants : MonoBehaviour
 
     private void MoveToPlant(Plant plant)
     {
+        var length = plant.GetWordLength();
         plant.onDone -= MoveToPlant;
         Tweener.MoveToBounceOut(player.transform, plant.transform.position, 0.3f);
+        this.StartCoroutine(() =>
+        {
+            scoreDisplay.Add(length);
+            scoreDisplay.AddMulti(length);
+        }, 0.3f);
     }
 }
