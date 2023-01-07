@@ -22,7 +22,9 @@ public class Plants : MonoBehaviour
 
     private readonly List<Plant> plants = new();
     private bool ended;
-    
+    private Queue<Plant> moveQueue = new();
+    private bool moving;
+
     private const float WalkDuration = 0.2f;
 
     private void Start()
@@ -109,6 +111,13 @@ public class Plants : MonoBehaviour
 
     private void MoveToPlant(Plant plant)
     {
+        if (moving)
+        {
+            moveQueue.Enqueue(plant);
+            return;
+        }
+
+        moving = true;
         var plantPos = plant.transform.position;
         var distance = Vector3.Distance(player.transform.position, plantPos);
         var duration = distance * WalkDuration;
@@ -123,6 +132,13 @@ public class Plants : MonoBehaviour
             UpdateLook();
             UpdateOvergrowth();
             plant.Remove();
+            moving = false;
+
+            if (moveQueue.Any())
+            {
+                MoveToPlant(moveQueue.Dequeue());
+            }
+
         }, duration);
     }
 
