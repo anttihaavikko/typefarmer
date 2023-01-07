@@ -8,6 +8,7 @@ using AnttiStarterKit.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Plants : MonoBehaviour
 {
@@ -22,8 +23,9 @@ public class Plants : MonoBehaviour
 
     private readonly List<Plant> plants = new();
     private bool ended;
-    private Queue<Plant> moveQueue = new();
+    private readonly Queue<Plant> moveQueue = new();
     private bool moving;
+    private int maxLength = 4;
 
     private const float WalkDuration = 0.2f;
 
@@ -74,7 +76,8 @@ public class Plants : MonoBehaviour
         if (ended) return;
         
         var plant = Instantiate(plantPrefab, FindSpot(), Quaternion.identity);
-        plant.Setup(words.GetRandomWord(6).ToUpper());
+        var min = Mathf.Max(3, Mathf.CeilToInt(maxLength * 0.5f));
+        plant.Setup(words.GetRandomWord(Random.Range(min, maxLength + 1)).ToUpper());
         plants.Add(plant);
 
         plant.onDone += MoveToPlant;
@@ -109,6 +112,12 @@ public class Plants : MonoBehaviour
         }
     }
 
+    private Vector3 GetTextOffset()
+    {
+        const float amount = 0.6f;
+        return Vector3.zero.WhereX(Random.Range(-amount, amount));
+    }
+
     private void MoveToPlant(Plant plant)
     {
         if (moving)
@@ -127,12 +136,28 @@ public class Plants : MonoBehaviour
         player.Run(duration - 0.1f);
         this.StartCoroutine(() =>
         {
-            scoreDisplay.Add(length);
+            var score = Mathf.CeilToInt(length * distance);
+            scoreDisplay.Add(score);
             scoreDisplay.AddMulti(length);
             UpdateLook();
             UpdateOvergrowth();
             plant.Remove();
             moving = false;
+
+            EffectManager.AddTextPopup(score.AsScore(), plantPos + Vector3.up * 2 + GetTextOffset());
+            var bonusText = $"<size=3>DISTANCE BONUS </size><size=5><color=#EDD83D>x{Mathf.CeilToInt(distance)}</color></size>";
+            EffectManager.AddTextPopup(bonusText, plantPos + Vector3.up * 1.5f + GetTextOffset());
+
+            if (plants.Count(p => !p.IsDone) == 0)
+            {
+                var fullClearMessage = "<size=3>FULL CLEAR BONUS </size><size=5><color=#EDD83D>x2</color></size>";
+                EffectManager.AddTextPopup(fullClearMessage, plantPos + Vector3.up * 1f + GetTextOffset());
+            }
+
+            if (length == maxLength)
+            {
+                maxLength++;
+            }
 
             if (moveQueue.Any())
             {
