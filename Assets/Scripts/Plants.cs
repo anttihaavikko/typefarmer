@@ -45,6 +45,8 @@ public class Plants : MonoBehaviour
 
         plant.onDone += MoveToPlant;
         
+        UpdateLook();
+        
         Invoke(nameof(SpawnPlant), 2f);
     }
 
@@ -57,6 +59,15 @@ public class Plants : MonoBehaviour
         {
             scoreDisplay.Add(length);
             scoreDisplay.AddMulti(length);
+            UpdateLook();
         }, 0.3f);
+    }
+
+    private void UpdateLook()
+    {
+        if (!plants.Any()) return;
+        var playerPos = player.transform.position;
+        var closest = plants.Where(p => !p.IsDone).OrderBy(p => Vector3.Distance(p.transform.position, playerPos)).First();
+        player.LookAt(closest.transform.position);
     }
 }
