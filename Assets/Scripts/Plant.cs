@@ -4,6 +4,7 @@ using AnttiStarterKit.Animations;
 using AnttiStarterKit.Managers;
 using TMPro;
 using UnityEngine;
+using AnttiStarterKit.Extensions;
 using Random = UnityEngine.Random;
 
 public class Plant : MonoBehaviour
@@ -13,7 +14,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private List<SpriteRenderer> cobs;
     [SerializeField] private WobblingText wobble;
     [SerializeField] private Transform center;
-
+    [SerializeField] private Transform rotateNode;
+    
     private string word;
     private int index;
 
@@ -82,5 +84,14 @@ public class Plant : MonoBehaviour
     public int GetWordLength()
     {
         return word.Length;
+    }
+
+    public void Shake()
+    {
+        Tweener.RotateToBounceOut(rotateNode, Quaternion.Euler(0, 0, 5f), 0.2f);
+        this.StartCoroutine(() =>
+        {
+            Tweener.RotateToQuad(rotateNode, Quaternion.identity, 0.2f);
+        }, 0.2f);
     }
 }
