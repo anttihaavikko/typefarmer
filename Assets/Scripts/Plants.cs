@@ -5,6 +5,7 @@ using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
+using AnttiStarterKit.Visuals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,7 @@ public class Plants : MonoBehaviour
     [SerializeField] private GameObject gameOverDisplay;
     [SerializeField] private Color red, yellow;
     [SerializeField] private Shaker barShaker;
+    [SerializeField] private EffectCamera cam;
 
     private readonly List<Plant> plants = new();
     private bool ended;
@@ -111,6 +113,7 @@ public class Plants : MonoBehaviour
 
         if (plants.Count(p => !p.IsDone) >= 11)
         {
+            cam.BaseEffect(0.5f);
             player.Lose();
             gameOverDisplay.SetActive(true);
             ended = true;
@@ -174,11 +177,15 @@ public class Plants : MonoBehaviour
         player.LookAt(plantPos);
         
         moving = true;
+        
+        cam.BaseEffect(0.1f);
 
         this.StartCoroutine(() => player.Swing(), duration * 0.8f);
         
         this.StartCoroutine(() =>
         {
+            cam.BaseEffect(0.2f);
+            
             var score = Mathf.CeilToInt(length * length * distance);
             UpdateOvergrowth();
             plant.Remove();
