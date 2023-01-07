@@ -27,6 +27,7 @@ public class Plants : MonoBehaviour
     private bool moving;
     private int maxLength = 4;
     private bool endKeysEnabled;
+    private bool filled = true;
 
     private const float WalkDuration = 0.2f;
 
@@ -34,6 +35,7 @@ public class Plants : MonoBehaviour
     {
         words.Setup();
         SpawnPlant();
+        filled = false;
     }
 
     private void Update()
@@ -89,7 +91,7 @@ public class Plants : MonoBehaviour
 
     private void SpawnPlant()
     {
-        if (ended) return;
+        if (!filled || ended) return;
         
         var plant = Instantiate(plantPrefab, FindSpot(), Quaternion.identity);
         var min = Mathf.Max(3, Mathf.CeilToInt(maxLength * 0.5f));
@@ -136,7 +138,7 @@ public class Plants : MonoBehaviour
 
     private Vector3 GetTextOffset()
     {
-        const float amount = 0.6f;
+        const float amount = 0.7f;
         return Vector3.zero.WhereX(Random.Range(-amount, amount));
     }
 
@@ -147,8 +149,7 @@ public class Plants : MonoBehaviour
             moveQueue.Enqueue(plant);
             return;
         }
-
-        moving = true;
+        
         var plantPos = plant.transform.position;
         var distance = Vector3.Distance(player.transform.position, plantPos);
         var duration = distance * WalkDuration;
@@ -156,15 +157,21 @@ public class Plants : MonoBehaviour
         plant.onDone -= MoveToPlant;
         Tweener.MoveTo(player.transform, plantPos, duration, TweenEasings.SineEaseInOut);
         player.Run(duration - 0.1f);
+
+        player.LookAt(plantPos);
+        
+        moving = true;
+        
         this.StartCoroutine(() =>
         {
             var score = Mathf.CeilToInt(length * distance);
-            UpdateLook();
             UpdateOvergrowth();
             plant.Remove();
             moving = false;
+            
+            UpdateLook();
 
-            EffectManager.AddTextPopup(score.AsScore(), plantPos + Vector3.up * 2 + GetTextOffset());
+            EffectManager.AddTextPopup((score * scoreDisplay.Multi).AsScore(), plantPos + Vector3.up * 2 + GetTextOffset());
             var bonusText = $"<size=3>DISTANCE BONUS </size><size=5><color=#EDD83D>x{Mathf.CeilToInt(distance)}</color></size>";
             EffectManager.AddTextPopup(bonusText, plantPos + Vector3.up * 1.5f + GetTextOffset());
 
@@ -188,11 +195,18 @@ public class Plants : MonoBehaviour
                 MoveToPlant(moveQueue.Dequeue());
             }
 
+            if (!filled)
+            {
+                filled = true;
+                SpawnPlant();
+            }
+
         }, duration);
     }
 
     private void UpdateLook()
     {
+        if (moving) return;
         if (!plants.Any()) return;
         var playerPos = player.transform.position;
         var closest = plants.Where(p => !p.IsDone).OrderBy(p => Vector3.Distance(p.transform.position, playerPos)).First();
