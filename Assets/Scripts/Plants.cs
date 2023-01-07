@@ -26,6 +26,7 @@ public class Plants : MonoBehaviour
     private readonly Queue<Plant> moveQueue = new();
     private bool moving;
     private int maxLength = 4;
+    private bool endKeysEnabled;
 
     private const float WalkDuration = 0.2f;
 
@@ -37,6 +38,21 @@ public class Plants : MonoBehaviour
 
     private void Update()
     {
+        if (endKeysEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+                return;
+            }
+
+            if (Input.anyKeyDown)
+            {
+                SceneChanger.Instance.ChangeScene("Main");
+                return;
+            }
+        }
+        
         if (ended) return;
         
         foreach (var letter in Input.inputString.Select(c => c.ToString().ToUpper()))
@@ -91,10 +107,16 @@ public class Plants : MonoBehaviour
             ended = true;
             barShaker.StopShaking();
             barShaker.gameObject.SetActive(false);
+            Invoke(nameof(EnableKeys), 0.5f);
             return;
         }
         
         Invoke(nameof(SpawnPlant), 2f);
+    }
+
+    private void EnableKeys()
+    {
+        endKeysEnabled = true;
     }
 
     private Vector3 FindSpot()
