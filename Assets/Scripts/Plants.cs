@@ -137,8 +137,6 @@ public class Plants : MonoBehaviour
         this.StartCoroutine(() =>
         {
             var score = Mathf.CeilToInt(length * distance);
-            scoreDisplay.Add(score);
-            scoreDisplay.AddMulti(length);
             UpdateLook();
             UpdateOvergrowth();
             plant.Remove();
@@ -152,7 +150,11 @@ public class Plants : MonoBehaviour
             {
                 var fullClearMessage = "<size=3>FULL CLEAR BONUS </size><size=5><color=#EDD83D>x2</color></size>";
                 EffectManager.AddTextPopup(fullClearMessage, plantPos + Vector3.up * 1f + GetTextOffset());
+                score *= 2;
             }
+            
+            scoreDisplay.Add(score);
+            scoreDisplay.AddMulti(length);
 
             if (length == maxLength)
             {
