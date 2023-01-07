@@ -28,14 +28,14 @@ public class Plants : MonoBehaviour
     private int maxLength = 4;
     private bool endKeysEnabled;
     private bool filled = true;
-    private float spawnDelay = 2f;
+    private float spawnDelay = 2.5f;
 
     private const float WalkDuration = 0.2f;
 
     private void Start()
     {
         words.Setup();
-        SpawnPlant();
+        SpawnPlant(true);
         filled = false;
     }
 
@@ -90,7 +90,12 @@ public class Plants : MonoBehaviour
         return Color.white;
     }
 
-    private void SpawnPlant()
+    private void SpawnPlantWithTimer()
+    {
+        SpawnPlant();
+    }
+
+    private void SpawnPlant(bool first = false)
     {
         if (!filled || ended) return;
         
@@ -106,6 +111,7 @@ public class Plants : MonoBehaviour
 
         if (plants.Count(p => !p.IsDone) >= 11)
         {
+            player.Lose();
             gameOverDisplay.SetActive(true);
             ended = true;
             barShaker.StopShaking();
@@ -113,10 +119,13 @@ public class Plants : MonoBehaviour
             Invoke(nameof(EnableKeys), 1f);
             return;
         }
-        
-        Invoke(nameof(SpawnPlant), spawnDelay);
 
-        spawnDelay *= 0.99f;
+        if (!first)
+        {
+            Invoke(nameof(SpawnPlantWithTimer), spawnDelay);   
+        }
+
+        spawnDelay *= 0.995f;
         Debug.Log($"Spawn delay now {spawnDelay}");
     }
 
@@ -165,6 +174,8 @@ public class Plants : MonoBehaviour
         player.LookAt(plantPos);
         
         moving = true;
+
+        this.StartCoroutine(() => player.Swing(), duration * 0.8f);
         
         this.StartCoroutine(() =>
         {

@@ -18,6 +18,8 @@ namespace AnttiStarterKit.Animations
 		public Transform[] pupils;
 		public Transform[] brows;
 		public Transform mouth;
+		
+		[SerializeField] private GameObject brow;
 
 		private Vector3[] browsTargetPosition, browsOriginalPosition;
 		private float[] browsTargetAngle, browsOriginalAngle;
@@ -77,6 +79,12 @@ namespace AnttiStarterKit.Animations
 			}
 
 			size = eyes[0].localScale.y;
+		}
+
+		public void Madden()
+		{
+			brow.SetActive(true);
+			mouthSprite.flipY = true;
 		}
 
 		private void Start()
