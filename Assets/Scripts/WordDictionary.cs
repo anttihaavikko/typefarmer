@@ -62,7 +62,7 @@ public class WordDictionary : ScriptableObject
     
     public string GetRandomWord(int maxLength)
     {
-        var key = words.Keys.Where(w => w.Length <= maxLength).ToArray().Random();
+        var key = words.Keys.Where(w => w.Length >= 3 && w.Length <= maxLength).ToArray().Random();
         var word = words[key];
         return word;
     }

@@ -19,10 +19,11 @@ public class Plants : MonoBehaviour
     [SerializeField] private GameObject gameOverDisplay;
     [SerializeField] private Color red, yellow;
     [SerializeField] private Shaker barShaker;
-    [SerializeField] private GameObject zoomCamera;
 
     private readonly List<Plant> plants = new();
     private bool ended;
+    
+    private const float WalkDuration = 0.2f;
 
     private void Start()
     {
@@ -108,16 +109,21 @@ public class Plants : MonoBehaviour
 
     private void MoveToPlant(Plant plant)
     {
+        var plantPos = plant.transform.position;
+        var distance = Vector3.Distance(player.transform.position, plantPos);
+        var duration = distance * WalkDuration;
         var length = plant.GetWordLength();
         plant.onDone -= MoveToPlant;
-        Tweener.MoveToBounceOut(player.transform, plant.transform.position, 0.3f);
+        Tweener.MoveTo(player.transform, plantPos, duration, TweenEasings.SineEaseInOut);
+        player.Run(duration - 0.1f);
         this.StartCoroutine(() =>
         {
             scoreDisplay.Add(length);
             scoreDisplay.AddMulti(length);
             UpdateLook();
             UpdateOvergrowth();
-        }, 0.3f);
+            plant.Remove();
+        }, duration);
     }
 
     private void UpdateLook()

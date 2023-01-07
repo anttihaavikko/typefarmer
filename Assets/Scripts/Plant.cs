@@ -14,7 +14,7 @@ public class Plant : MonoBehaviour
     private int index;
 
     public Action<Plant> onDone;
-    
+
     public bool IsDone { get; private set; }
 
     private void Start()
@@ -47,7 +47,6 @@ public class Plant : MonoBehaviour
             {
                 onDone?.Invoke(this);
                 IsDone = true;
-                Invoke(nameof(Remove), 0.5f);
             }
             
             return;
@@ -57,7 +56,7 @@ public class Plant : MonoBehaviour
         wordText.text = word;
     }
 
-    private void Remove()
+    public void Remove()
     {
         gameObject.SetActive(false);
     }
