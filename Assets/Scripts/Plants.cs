@@ -164,7 +164,7 @@ public class Plants : MonoBehaviour
         
         this.StartCoroutine(() =>
         {
-            var score = Mathf.CeilToInt(length * distance);
+            var score = Mathf.CeilToInt(length * length * distance);
             UpdateOvergrowth();
             plant.Remove();
             moving = false;
