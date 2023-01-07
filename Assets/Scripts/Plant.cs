@@ -52,6 +52,9 @@ public class Plant : MonoBehaviour
             wordText.text = $"<color=#EDD83D>{word[..index]}</color>{word[index..]}";
             wobble.EndIndex = index;
 
+            var offset = new Vector3(0.2f, -0.2f, 0);
+            EffectManager.AddEffect(1, wordText.transform.position + wordText.textInfo.characterInfo[index - 1].topLeft + offset);
+
             if (index >= word.Length)
             {
                 onDone?.Invoke(this);

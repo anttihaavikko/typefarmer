@@ -58,7 +58,7 @@ namespace AnttiStarterKit.Animations
                     }
                     continue;
                 }
-                
+
                 OffsetCharacter(realPos, textField.textInfo.characterInfo[realPos], ref verts);
                 realPos++;
             }
