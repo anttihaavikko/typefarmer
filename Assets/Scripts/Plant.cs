@@ -42,6 +42,8 @@ public class Plant : MonoBehaviour
     {
         word = w;
         wordText.text = word;
+        
+        wordText.transform.SetParent(null);
     }
 
     public void Fill(string letter)
@@ -72,7 +74,9 @@ public class Plant : MonoBehaviour
     public void Remove()
     {
         EffectManager.AddEffects(new []{ 0, 2 }, center.position);
-        gameObject.SetActive(false);
+        
+        Destroy(wordText.gameObject);
+        Destroy(gameObject);
     }
 
     public int GetWordLength()
