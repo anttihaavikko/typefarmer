@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 1970317846978578574}
   - component: {fileID: 1970317846978578572}
   - component: {fileID: 1970317846978578575}
+  - component: {fileID: 6791955478015828270}
   m_Layer: 0
   m_Name: Word
   m_TagString: Untagged
@@ -574,6 +575,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1970317846978578572}
   m_maskType: 0
+--- !u!114 &6791955478015828270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970317846978578569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd78f00156b840c092ce66dc032c7f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.04
+  speed: 10
+  topModifier: 1
+  bottomModifier: 1
 --- !u!1 &1970317848696730820
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +627,7 @@ Transform:
   - {fileID: 7001838870710556120}
   - {fileID: 1970317846978578574}
   - {fileID: 8533326393172535699}
+  - {fileID: 445491810596627191}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -639,6 +657,8 @@ MonoBehaviour:
   - {fileID: 4448984405720611567}
   - {fileID: 1039408007092330848}
   - {fileID: 431748778208414105}
+  wobble: {fileID: 6791955478015828270}
+  center: {fileID: 445491810596627191}
 --- !u!114 &1070759525275615645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,6 +1637,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8667904012433909866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445491810596627191}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445491810596627191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667904012433909866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.744, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1970317848696730821}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8904045394365045870
 GameObject:
   m_ObjectHideFlags: 0

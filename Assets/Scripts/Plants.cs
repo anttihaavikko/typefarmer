@@ -28,6 +28,7 @@ public class Plants : MonoBehaviour
     private int maxLength = 4;
     private bool endKeysEnabled;
     private bool filled = true;
+    private float spawnDelay = 2f;
 
     private const float WalkDuration = 0.2f;
 
@@ -109,11 +110,14 @@ public class Plants : MonoBehaviour
             ended = true;
             barShaker.StopShaking();
             barShaker.gameObject.SetActive(false);
-            Invoke(nameof(EnableKeys), 0.5f);
+            Invoke(nameof(EnableKeys), 1f);
             return;
         }
         
-        Invoke(nameof(SpawnPlant), 2f);
+        Invoke(nameof(SpawnPlant), spawnDelay);
+
+        spawnDelay *= 0.99f;
+        Debug.Log($"Spawn delay now {spawnDelay}");
     }
 
     private void EnableKeys()

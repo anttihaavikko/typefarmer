@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using AnttiStarterKit.Animations;
+using AnttiStarterKit.Managers;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,6 +11,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private TMP_Text wordText;
     [SerializeField] private List<GameObject> leaves;
     [SerializeField] private List<SpriteRenderer> cobs;
+    [SerializeField] private WobblingText wobble;
+    [SerializeField] private Transform center;
 
     private string word;
     private int index;
@@ -21,6 +25,10 @@ public class Plant : MonoBehaviour
     {
         leaves.ForEach(l => l.SetActive(Random.value < 0.7f));
         cobs.ForEach(RandomizeCob);
+        
+        wobble.EndIndex = 0;
+
+        EffectManager.AddEffect(0, center.position);
     }
 
     private void RandomizeCob(SpriteRenderer cob)
@@ -41,7 +49,8 @@ public class Plant : MonoBehaviour
         if (word.Substring(index, 1) == letter)
         {
             index++;
-            wordText.text = $"<color=#EDD83D><size=6>{word[..index]}</size></color>{word[index..]}";
+            wordText.text = $"<color=#EDD83D>{word[..index]}</color>{word[index..]}";
+            wobble.EndIndex = index;
 
             if (index >= word.Length)
             {
@@ -53,11 +62,13 @@ public class Plant : MonoBehaviour
         }
 
         index = 0;
+        wobble.EndIndex = index;
         wordText.text = word;
     }
 
     public void Remove()
     {
+        EffectManager.AddEffects(new []{ 0, 2 }, center.position);
         gameObject.SetActive(false);
     }
 

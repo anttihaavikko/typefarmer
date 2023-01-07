@@ -167,7 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8194efa79953f49119eb50e5c3c91927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effects: []
+  effects:
+  - {fileID: 5427275002781990538, guid: 151e945063c9543d287a3bb3c0ad8ef7, type: 3}
+  - {fileID: 5901857389752271184, guid: 0de333698ebe8427ab8cfd0728e65e98, type: 3}
+  - {fileID: 5901857389752271184, guid: cf511e15ae18647faae2fa43b04f4ad4, type: 3}
   textPopupPrefab: {fileID: 1004908889555569716, guid: 34d39ef42cf49483780f9d4741f09907, type: 3}
 --- !u!1 &41531552
 GameObject:
