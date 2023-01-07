@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Managers;
 using UnityEngine;
@@ -31,10 +32,18 @@ public class Plants : MonoBehaviour
 
     private void SpawnPlant()
     {
-        var plant = Instantiate(plantPrefab, Vector3.zero.RandomOffset(5f), Quaternion.identity);
+        var plant = Instantiate(plantPrefab, player.transform.position.RandomOffset(4f), Quaternion.identity);
         plant.Setup(words.GetRandomWord(6).ToUpper());
         plants.Add(plant);
+
+        plant.onDone += MoveToPlant;
         
         Invoke(nameof(SpawnPlant), 2f);
+    }
+
+    private void MoveToPlant(Plant plant)
+    {
+        plant.onDone -= MoveToPlant;
+        Tweener.MoveToBounceOut(player.transform, plant.transform.position, 0.3f);
     }
 }

@@ -8,6 +8,8 @@ public class Plant : MonoBehaviour
 
     private string word;
     private int index;
+
+    public Action<Plant> onDone;
     
     public bool IsDone { get; private set; }
     
@@ -22,12 +24,13 @@ public class Plant : MonoBehaviour
         if (word.Substring(index, 1) == letter)
         {
             index++;
-            wordText.text = $"<color=yellow>{word[..index]}</color>{word[index..]}";
+            wordText.text = $"<color=yellow><size=6>{word[..index]}</size></color>{word[index..]}";
 
             if (index >= word.Length)
             {
+                onDone?.Invoke(this);
                 IsDone = true;
-                gameObject.SetActive(false);
+                Invoke(nameof(Remove), 0.5f);
             }
             
             return;
@@ -35,5 +38,10 @@ public class Plant : MonoBehaviour
 
         index = 0;
         wordText.text = word;
+    }
+
+    private void Remove()
+    {
+        gameObject.SetActive(false);
     }
 }
