@@ -6,8 +6,10 @@ using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Visuals;
+using Leaderboards;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -22,6 +24,7 @@ public class Plants : MonoBehaviour
     [SerializeField] private Color red, yellow;
     [SerializeField] private Shaker barShaker;
     [SerializeField] private EffectCamera cam;
+    [SerializeField] private ScoreManager scoreManager;
 
     private readonly List<Plant> plants = new();
     private bool ended;
@@ -31,6 +34,7 @@ public class Plants : MonoBehaviour
     private bool endKeysEnabled;
     private bool filled = true;
     private float spawnDelay = 2.5f;
+    private int matches;
 
     private const float WalkDuration = 0.2f;
 
@@ -134,6 +138,10 @@ public class Plants : MonoBehaviour
 
     private void EnableKeys()
     {
+        var plr = PlayerPrefs.GetString("PlayerName", "Anon");
+        var id = PlayerPrefs.GetString("PlayerId", "000-000-000");
+        scoreManager.SubmitScore(plr, scoreDisplay.Total, matches, id);
+        
         endKeysEnabled = true;
     }
 
@@ -195,6 +203,8 @@ public class Plants : MonoBehaviour
 
             EffectManager.AddTextPopup((score * scoreDisplay.Multi).AsScore(), plantPos + Vector3.up * 2 + GetTextOffset());
 
+            matches++;
+
             this.StartCoroutine(() =>
             {
                 var bonusText =
@@ -211,9 +221,12 @@ public class Plants : MonoBehaviour
                 }, 0.22f);
                 score *= 2;
             }
-            
-            scoreDisplay.Add(score);
-            scoreDisplay.AddMulti(length);
+
+            if (!ended)
+            {
+                scoreDisplay.Add(score);
+                scoreDisplay.AddMulti(length);   
+            }
 
             if (length == maxLength)
             {
