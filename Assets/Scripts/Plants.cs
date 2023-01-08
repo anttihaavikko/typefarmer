@@ -150,7 +150,7 @@ public class Plants : MonoBehaviour
         }
 
         spawnDelay *= 0.995f;
-        Debug.Log($"Spawn delay now {spawnDelay}");
+        // Debug.Log($"Spawn delay now {spawnDelay}");
     }
 
     private void EnableKeys()
