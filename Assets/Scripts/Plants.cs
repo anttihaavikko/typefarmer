@@ -39,7 +39,7 @@ public class Plants : MonoBehaviour
     private int matches;
     private bool helpShown;
 
-    private const float WalkDuration = 0.2f;
+    public const float WalkDuration = 0.2f;
 
     private void Start()
     {
