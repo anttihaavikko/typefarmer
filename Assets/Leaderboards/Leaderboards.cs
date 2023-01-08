@@ -21,7 +21,7 @@ namespace Leaderboards
 
         private void Update()
         {
-            DebugPagination();
+            // DebugPagination();
         }
 
         private void DebugPagination()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartView : MonoBehaviour
 {
+    [SerializeField] private Leaderboards.Leaderboards leaderboards;
+    
     private bool canInteract;
 
     private void Start()
@@ -20,6 +22,20 @@ public class StartView : MonoBehaviour
     private void Update()
     {
         if (!canInteract) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        {
+            leaderboards.ChangePage(-1);
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            leaderboards.ChangePage(1);
+            return;
+        }
+
+        if (Input.GetMouseButton(0)) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
