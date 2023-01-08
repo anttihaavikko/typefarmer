@@ -51,7 +51,7 @@ public class Plants : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Application.Quit();
+                SceneChanger.Instance.ChangeScene("Start");
                 return;
             }
 
