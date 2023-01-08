@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 1970317846978578572}
   - component: {fileID: 1970317846978578575}
   - component: {fileID: 6791955478015828270}
+  - component: {fileID: 2211831840202278652}
   m_Layer: 0
   m_Name: Word
   m_TagString: Untagged
@@ -591,6 +592,23 @@ MonoBehaviour:
   speed: 10
   topModifier: 1
   bottomModifier: 1
+--- !u!114 &2211831840202278652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970317846978578569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9566f86d52934ac3b3620665f8d044f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.05
+  rotationAmount: 1
+  duration: 0.25
+  decreasing: 1
+  useLocalPosition: 0
 --- !u!1 &1970317848696730820
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +678,7 @@ MonoBehaviour:
   wobble: {fileID: 6791955478015828270}
   center: {fileID: 445491810596627191}
   rotateNode: {fileID: 0}
+  shaker: {fileID: 2211831840202278652}
 --- !u!114 &1070759525275615645
 MonoBehaviour:
   m_ObjectHideFlags: 0

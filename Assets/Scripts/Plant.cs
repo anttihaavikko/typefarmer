@@ -15,7 +15,8 @@ public class Plant : MonoBehaviour
     [SerializeField] private WobblingText wobble;
     [SerializeField] private Transform center;
     [SerializeField] private Transform rotateNode;
-    
+    [SerializeField] private Shaker shaker;
+
     private string word;
     private int index;
 
@@ -66,6 +67,11 @@ public class Plant : MonoBehaviour
             }
             
             return;
+        }
+
+        if (index > 0)
+        {
+            shaker.Shake();
         }
 
         index = 0;
