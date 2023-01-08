@@ -24,7 +24,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994948"
+     inkscape:zoom="0.49497474"
      inkscape:cx="4423.3291"
      inkscape:cy="148.55237"
      inkscape:document-units="mm"
@@ -35,7 +35,7 @@
      inkscape:window-height="964"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:snap-global="false" />
   <metadata
      id="metadata5">
@@ -12007,6 +12007,13 @@ CnQhhBBCCCGEEGILIAW6EEIIIYQQQgixBfjfdlkpBrTMoC0AAAAASUVORK5CYII=
        style="fill:none;stroke:#ffffff;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 1147.6554,-32.072344 h 50.2466 l -25.466,44.108378 z"
        id="path1148"
+       inkscape:export-xdpi="64"
+       inkscape:export-ydpi="64" />
+    <path
+       style="fill:#6ab547;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       d="m 1335.8131,32.072344 c 15.9239,-9.530437 32.056,-17.082674 50.7812,0 -16.0619,12.977683 -33.3097,8.16606 -50.7812,0 z"
+       id="path1170"
+       sodipodi:nodetypes="ccc"
        inkscape:export-xdpi="64"
        inkscape:export-ydpi="64" />
   </g>
