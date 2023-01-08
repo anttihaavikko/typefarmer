@@ -72,6 +72,8 @@ public class Plant : MonoBehaviour
 
             if (index >= word.Length)
             {
+                AudioManager.Instance.PlayEffectAt(1, p, 0.5f, false);
+                
                 onDone?.Invoke(this);
                 IsDone = true;
             }

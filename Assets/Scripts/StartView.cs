@@ -1,4 +1,5 @@
 using System;
+using AnttiStarterKit.Managers;
 using UnityEngine;
 
 public class StartView : MonoBehaviour
@@ -8,6 +9,7 @@ public class StartView : MonoBehaviour
     private void Start()
     {
         Invoke(nameof(EnableInteraction), 1f);
+        AudioManager.Instance.TargetPitch = 1;
     }
 
     private void EnableInteraction()
