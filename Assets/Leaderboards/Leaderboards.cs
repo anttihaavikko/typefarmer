@@ -35,17 +35,22 @@ namespace Leaderboards
         {
             var data = scoreManager.GetData();
 
-            for (var i = 0; i < transform.childCount; i++)
-            {
-                var go = transform.GetChild(i).gameObject;
-                Destroy(go);
-            }
+            Clear();
 
             data.scores.ToList().ForEach(entry =>
             {
                 var row = Instantiate(rowPrefab, transform);
                 row.Setup(entry.position + ". " + entry.name, int.Parse(entry.score).AsScore(), entry.locale);
             });
+        }
+
+        private void Clear()
+        {
+            for (var i = 0; i < transform.childCount; i++)
+            {
+                var go = transform.GetChild(i).gameObject;
+                Destroy(go);
+            }
         }
 
         public void ChangePage(int direction)
