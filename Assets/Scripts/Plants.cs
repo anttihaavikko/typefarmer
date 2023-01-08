@@ -194,13 +194,21 @@ public class Plants : MonoBehaviour
             UpdateLook();
 
             EffectManager.AddTextPopup((score * scoreDisplay.Multi).AsScore(), plantPos + Vector3.up * 2 + GetTextOffset());
-            var bonusText = $"<size=3>DISTANCE BONUS </size><size=5><color=#EDD83D>x{Mathf.CeilToInt(distance)}</color></size>";
-            EffectManager.AddTextPopup(bonusText, plantPos + Vector3.up * 1.5f + GetTextOffset());
+
+            this.StartCoroutine(() =>
+            {
+                var bonusText =
+                    $"<size=3>DISTANCE BONUS </size><size=5><color=#EDD83D>x{Mathf.CeilToInt(distance)}</color></size>";
+                EffectManager.AddTextPopup(bonusText, plantPos + Vector3.up * 1.5f + GetTextOffset());
+            }, 0.15f);
 
             if (plants.Count(p => !p.IsDone) == 0)
             {
-                var fullClearMessage = "<size=3>FULL CLEAR BONUS </size><size=5><color=#EDD83D>x2</color></size>";
-                EffectManager.AddTextPopup(fullClearMessage, plantPos + Vector3.up * 1f + GetTextOffset());
+                this.StartCoroutine(() =>
+                {
+                    var fullClearMessage = "<size=2.5>FULL CLEAR BONUS </size><size=4.5><color=#EDD83D>x2</color></size>";
+                    EffectManager.AddTextPopup(fullClearMessage, plantPos + Vector3.up * 1f + GetTextOffset());
+                }, 0.22f);
                 score *= 2;
             }
             
