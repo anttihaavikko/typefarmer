@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: picks
+  m_EditorClassIdentifier: 
+  volume: 0.2
+  clips:
+  - {fileID: 8300000, guid: 773f5c13e543d4405a30e6623e01fa82, type: 3}
+  - {fileID: 8300000, guid: c8975008292d54dc2990e5b3c3f48be3, type: 3}
+  - {fileID: 8300000, guid: e156995b8bb9347059fb64aa7c1a2bf3, type: 3}
+  - {fileID: 8300000, guid: bade106c25383496aa83c39fee54db68, type: 3}
+  - {fileID: 8300000, guid: 0c677b6078a30441f98ec844da53d54b, type: 3}
+  - {fileID: 8300000, guid: 48ae7f2413ffa4dd1a54935ea4a0e94e, type: 3}
+  - {fileID: 8300000, guid: 86f9f338633994c3786ea42211469b88, type: 3}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: claps
+  m_EditorClassIdentifier: 
+  volume: 1
+  clips:
+  - {fileID: 8300000, guid: 74a02bf8746df450c890bf7722d5ee04, type: 3}
+  - {fileID: 8300000, guid: bae0ae90a86f04a0aa18c5163b98ce14, type: 3}
+  - {fileID: 8300000, guid: b119501313ec240f39945f13e88a006f, type: 3}
+  - {fileID: 8300000, guid: b4418a9a45d9244fc88dbe192a255b41, type: 3}
+  - {fileID: 8300000, guid: f2f0cec6feaa84523a0cca0aa4608170, type: 3}
+  - {fileID: 8300000, guid: 30949b21308d74c40930c434dc3192af, type: 3}

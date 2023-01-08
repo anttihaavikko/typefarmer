@@ -777,6 +777,8 @@ MonoBehaviour:
   wobble: {fileID: 6791955478015828270}
   center: {fileID: 445491810596627191}
   shaker: {fileID: 2211831840202278652}
+  bass: {fileID: 11400000, guid: f15aca3ac33464238b02d14eab220423, type: 2}
+  picks: {fileID: 11400000, guid: ea98f26eaec3a45f3829f7079e15ae26, type: 2}
 --- !u!114 &1070759525275615645
 MonoBehaviour:
   m_ObjectHideFlags: 0

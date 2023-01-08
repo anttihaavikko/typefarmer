@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     public void Swing()
     {
+        AudioManager.Instance.PlayEffectFromCollection(4, transform.position);
         anim.SetTrigger(SwingAnim);
     }
 
@@ -50,13 +51,17 @@ public class Player : MonoBehaviour
 
     public void StepLeft()
     {
-        EffectManager.AddEffect(3, leftFoot.transform.position);
+        var p = leftFoot.transform.position;
+        EffectManager.AddEffect(3, p);
         leftFoot.Emit(new ParticleSystem.EmitParams(), 1);
+        AudioManager.Instance.PlayEffectFromCollection(0, p);
     }
 
     public void StepRight()
     {
-        EffectManager.AddEffect(3, rightFoot.transform.position);
+        var p = rightFoot.transform.position;
+        EffectManager.AddEffect(3, p);
         rightFoot.Emit(new ParticleSystem.EmitParams(), 1);
+        AudioManager.Instance.PlayEffectFromCollection(0, p);
     }
 }

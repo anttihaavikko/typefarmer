@@ -46,6 +46,8 @@ public class Plants : MonoBehaviour
         words.Setup();
         SpawnPlant(true);
         filled = false;
+        
+        AudioManager.Instance.TargetPitch = 1;
     }
 
     private void Update()
@@ -75,7 +77,8 @@ public class Plants : MonoBehaviour
         
         foreach (var letter in Input.inputString.Select(c => c.ToString().ToUpper()))
         {
-            plants.ForEach(p => p.Fill(letter));
+            var best = plants.Where(p => !p.IsDone).Max(p => p.Index);
+            plants.ForEach(p => p.Fill(letter, best));
             scoreDisplay.DecreaseMulti();
         }
         
@@ -90,6 +93,7 @@ public class Plants : MonoBehaviour
 
         if (plants.Count(p => !p.IsDone) >= 10)
         {
+            AudioManager.Instance.PlayEffectAt(0, player.transform.position, 2f, false);
             barShaker.ShakeForever();
             return;
         }
@@ -115,10 +119,17 @@ public class Plants : MonoBehaviour
         if (!filled || ended) return;
 
         var plantPrefab = plantPrefabs.Random();
-        var plant = Instantiate(plantPrefab, FindSpot(), Quaternion.identity);
+        var p = FindSpot();
+        var plant = Instantiate(plantPrefab, p, Quaternion.identity);
         var min = Mathf.Max(3, Mathf.CeilToInt(maxLength * 0.5f));
         plant.Setup(words.GetRandomWord(Random.Range(min, maxLength + 1)).ToUpper());
         plants.Add(plant);
+
+        if (!first)
+        {
+            AudioManager.Instance.PlayEffectFromCollection(0, p, 4f);
+            AudioManager.Instance.PlayEffectFromCollection(1, p, 1.3f);
+        }
         
         if (first)
         {
@@ -134,6 +145,7 @@ public class Plants : MonoBehaviour
 
         if (plants.Count(p => !p.IsDone) >= 11)
         {
+            AudioManager.Instance.TargetPitch = 0;
             cam.BaseEffect(0.5f);
             player.Lose();
             gameOverDisplay.SetActive(true);

@@ -5,6 +5,7 @@ using AnttiStarterKit.Managers;
 using TMPro;
 using UnityEngine;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.ScriptableObjects;
 using Random = UnityEngine.Random;
 
 public class Plant : MonoBehaviour
@@ -15,11 +16,14 @@ public class Plant : MonoBehaviour
     [SerializeField] private WobblingText wobble;
     [SerializeField] private Transform center;
     [SerializeField] private Shaker shaker;
+    [SerializeField] private SoundCollection bass, picks;
 
     private string word;
     private int index;
 
     public Action<Plant> onDone;
+
+    public int Index => index;
 
     public bool IsDone { get; private set; }
 
@@ -48,8 +52,10 @@ public class Plant : MonoBehaviour
         wordText.transform.SetParent(null);
     }
 
-    public void Fill(string letter)
+    public void Fill(string letter, int bestIndex)
     {
+        var isBest = index == bestIndex;
+        
         if (word.Substring(index, 1) == letter)
         {
             index++;
@@ -57,7 +63,12 @@ public class Plant : MonoBehaviour
             wobble.EndIndex = index;
 
             var offset = new Vector3(0.2f, -0.2f, 0);
-            EffectManager.AddEffect(1, wordText.transform.position + wordText.textInfo.characterInfo[index - 1].topLeft + offset);
+            var p = wordText.transform.position + wordText.textInfo.characterInfo[index - 1].topLeft + offset;
+            EffectManager.AddEffect(1, p);
+            AudioManager.Instance.PlayEffectFromCollection(1, p);
+            AudioManager.Instance.PlayEffectFromCollection(2, p);
+            
+            AudioManager.Instance.PlayEffectAt(picks.At((index - 1) % 7), p, 0.2f, false);
 
             if (index >= word.Length)
             {
@@ -70,6 +81,13 @@ public class Plant : MonoBehaviour
 
         if (index > 0)
         {
+            if (isBest)
+            {
+                var offset = new Vector3(0.2f, -0.2f, 0);
+                var p = wordText.transform.position + wordText.textInfo.characterInfo[index - 1].topLeft + offset;
+                AudioManager.Instance.PlayEffectAt(bass.At((index - 1) % 7), p, 1.3f, false);     
+            }
+            
             shaker.Shake();
         }
 
@@ -80,7 +98,9 @@ public class Plant : MonoBehaviour
 
     public void Remove()
     {
-        EffectManager.AddEffects(new []{ 0, 2, 4 }, center.position);
+        var p = center.position;
+        AudioManager.Instance.PlayEffectFromCollection(3, p);
+        EffectManager.AddEffects(new []{ 0, 2, 4 }, p);
         
         Destroy(wordText.gameObject);
         Destroy(gameObject);

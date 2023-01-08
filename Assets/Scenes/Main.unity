@@ -265,7 +265,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &71069627
 GameObject:
@@ -467,7 +467,7 @@ Transform:
   - {fileID: 1502753295}
   - {fileID: 71069628}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97005841
 MonoBehaviour:
@@ -1357,7 +1357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &238339618
 MonoBehaviour:
@@ -2155,7 +2155,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!1 &399151056
 GameObject:
@@ -3249,7 +3249,7 @@ GameObject:
   - component: {fileID: 619002057}
   - component: {fileID: 619002058}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: Audio Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3262,14 +3262,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619002056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1215791417}
-  m_Father: {fileID: 860385855}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &619002058
 MonoBehaviour:
@@ -3288,8 +3288,14 @@ MonoBehaviour:
   musics:
   - {fileID: 1215791418}
   volume: 0.5
-  effects: []
-  soundCollections: []
+  effects:
+  - {fileID: 8300000, guid: d8e34451b8451433a8d7fdcf07326484, type: 3}
+  soundCollections:
+  - {fileID: 11400000, guid: 4c01a911aa45242c89d71fc4bd3d3c07, type: 2}
+  - {fileID: 11400000, guid: 7c297adce7e794b49b8d3b181f1f90c1, type: 2}
+  - {fileID: 11400000, guid: 30926011a11844ab48766af654ad9027, type: 2}
+  - {fileID: 11400000, guid: ec9295a39b8d643d385ec4696b2a1b29, type: 2}
+  - {fileID: 11400000, guid: 74c4ed5bc7b85476bbc0905d5b55838d, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,7 +3439,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &674848468
 ParticleSystemRenderer:
@@ -8573,7 +8579,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &766054186
 ParticleSystemRenderer:
@@ -13810,7 +13816,6 @@ Transform:
   - {fileID: 1182022755}
   - {fileID: 13692440}
   - {fileID: 127661752}
-  - {fileID: 619002057}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14435,6 +14440,7 @@ GameObject:
   - component: {fileID: 1024917049}
   - component: {fileID: 1024917048}
   - component: {fileID: 1024917050}
+  - component: {fileID: 1024917051}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -14461,7 +14467,7 @@ Transform:
   - {fileID: 790648082}
   - {fileID: 460429668}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1024917047
 MonoBehaviour:
@@ -14525,6 +14531,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1024917051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024917045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e288b794a54f699b4b3699b8b19255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 11400000, guid: fc5829d0367c64ffb95dc93e2813c244, type: 2}
+  composition: {fileID: 0}
+  volume: 1
 --- !u!1 &1086916886
 GameObject:
   m_ObjectHideFlags: 0
@@ -16821,7 +16842,7 @@ RectTransform:
   m_Children:
   - {fileID: 1220425966}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

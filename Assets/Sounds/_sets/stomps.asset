@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: stomps
+  m_EditorClassIdentifier: 
+  volume: 0.3
+  clips:
+  - {fileID: 8300000, guid: 918c1c444922249d2bc5050ce26978b5, type: 3}
+  - {fileID: 8300000, guid: f81d05759bb7f406495d3e78a2ae98bc, type: 3}
+  - {fileID: 8300000, guid: 96f49ec91618b4bd4ae72a334f03a900, type: 3}
+  - {fileID: 8300000, guid: f19ceb6bbd78b4a0584e5c0bf88dd895, type: 3}
