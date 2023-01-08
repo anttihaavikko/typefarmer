@@ -677,7 +677,6 @@ MonoBehaviour:
   - {fileID: 431748778208414105}
   wobble: {fileID: 6791955478015828270}
   center: {fileID: 445491810596627191}
-  rotateNode: {fileID: 0}
   shaker: {fileID: 2211831840202278652}
 --- !u!114 &1070759525275615645
 MonoBehaviour:
@@ -1439,7 +1438,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: f7b448315112749509abc412418e77c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1461,7 +1460,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4844f34bdb54242f1a7bb5882ada20d9, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.2}
+  m_Color: {r: 0.2784314, g: 0.47058824, b: 0.70980394, a: 0.4}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
