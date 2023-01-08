@@ -5,6 +5,7 @@ using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
+using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
 using Leaderboards;
 using TMPro;
@@ -25,6 +26,7 @@ public class Plants : MonoBehaviour
     [SerializeField] private EffectCamera cam;
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private List<Plant> plantPrefabs;
+    [SerializeField] private Appearer helpText;
 
     private readonly List<Plant> plants = new();
     private bool ended;
@@ -35,6 +37,7 @@ public class Plants : MonoBehaviour
     private bool filled = true;
     private float spawnDelay = 2.5f;
     private int matches;
+    private bool helpShown;
 
     private const float WalkDuration = 0.2f;
 
@@ -47,6 +50,12 @@ public class Plants : MonoBehaviour
 
     private void Update()
     {
+        if (DevKey.Down(KeyCode.Alpha1))
+        {
+            SceneChanger.Instance.ChangeScene("Main");
+            return;
+        }
+        
         if (endKeysEnabled)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -110,6 +119,13 @@ public class Plants : MonoBehaviour
         var min = Mathf.Max(3, Mathf.CeilToInt(maxLength * 0.5f));
         plant.Setup(words.GetRandomWord(Random.Range(min, maxLength + 1)).ToUpper());
         plants.Add(plant);
+        
+        if (first)
+        {
+            helpShown = true;
+            helpText.ShowAfter(1f);
+            helpText.transform.position = plant.transform.position + Vector3.up * 1.1f;
+        }
 
         plant.onDone += MoveToPlant;
         
@@ -173,6 +189,12 @@ public class Plants : MonoBehaviour
         {
             moveQueue.Enqueue(plant);
             return;
+        }
+
+        if (helpShown)
+        {
+            helpShown = false;
+            helpText.Hide();
         }
         
         var plantPos = plant.transform.position;
