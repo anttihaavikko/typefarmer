@@ -80,7 +80,7 @@ public class Plant : MonoBehaviour
 
     public void Remove()
     {
-        EffectManager.AddEffects(new []{ 0, 2 }, center.position);
+        EffectManager.AddEffects(new []{ 0, 2, 4 }, center.position);
         
         Destroy(wordText.gameObject);
         Destroy(gameObject);

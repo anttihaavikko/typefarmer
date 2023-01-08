@@ -203,6 +203,7 @@ MonoBehaviour:
   - {fileID: 5901857389752271184, guid: 0de333698ebe8427ab8cfd0728e65e98, type: 3}
   - {fileID: 5901857389752271184, guid: cf511e15ae18647faae2fa43b04f4ad4, type: 3}
   - {fileID: 8725686594486911162, guid: 0da98b40f3ed64b16b1dfa5860080c20, type: 3}
+  - {fileID: 2973163115212574177, guid: cc3e8f2c0f2e1462b93187b21f6c656a, type: 3}
   textPopupPrefab: {fileID: 1004908889555569716, guid: 34d39ef42cf49483780f9d4741f09907, type: 3}
 --- !u!1 &32097194
 GameObject:
@@ -14717,7 +14718,7 @@ GameObject:
   - component: {fileID: 1150837357}
   - component: {fileID: 1150837358}
   - component: {fileID: 1150837359}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
