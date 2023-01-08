@@ -963,7 +963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1024917047}
-  plantPrefab: {fileID: -2272861833302107004, guid: d35708d4eea4e4fa9ad1dd16408a0c8d, type: 3}
   words: {fileID: 11400000, guid: bd6ec1ad1083648539ded845d1ccd9ce, type: 2}
   scoreDisplay: {fileID: 2029441375}
   overgrowthBar: {fileID: 746149490}
@@ -973,6 +972,9 @@ MonoBehaviour:
   barShaker: {fileID: 1879660999}
   cam: {fileID: 519420034}
   scoreManager: {fileID: 127661753}
+  plantPrefabs:
+  - {fileID: -2272861833302107004, guid: d35708d4eea4e4fa9ad1dd16408a0c8d, type: 3}
+  - {fileID: 3985481794518795016, guid: 9c873cd52db8c49cd94c4351d417bd3d, type: 3}
 --- !u!4 &238339617
 Transform:
   m_ObjectHideFlags: 0

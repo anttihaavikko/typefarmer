@@ -14,7 +14,6 @@ public class Plant : MonoBehaviour
     [SerializeField] private List<SpriteRenderer> cobs;
     [SerializeField] private WobblingText wobble;
     [SerializeField] private Transform center;
-    [SerializeField] private Transform rotateNode;
     [SerializeField] private Shaker shaker;
 
     private string word;
@@ -90,14 +89,5 @@ public class Plant : MonoBehaviour
     public int GetWordLength()
     {
         return word.Length;
-    }
-
-    public void Shake()
-    {
-        Tweener.RotateToBounceOut(rotateNode, Quaternion.Euler(0, 0, 5f), 0.2f);
-        this.StartCoroutine(() =>
-        {
-            Tweener.RotateToQuad(rotateNode, Quaternion.identity, 0.2f);
-        }, 0.2f);
     }
 }

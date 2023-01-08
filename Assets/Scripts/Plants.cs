@@ -16,7 +16,6 @@ using Random = UnityEngine.Random;
 public class Plants : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private Plant plantPrefab;
     [SerializeField] private WordDictionary words;
     [SerializeField] private ScoreDisplay scoreDisplay;
     [SerializeField] private Image overgrowthBar;
@@ -25,6 +24,7 @@ public class Plants : MonoBehaviour
     [SerializeField] private Shaker barShaker;
     [SerializeField] private EffectCamera cam;
     [SerializeField] private ScoreManager scoreManager;
+    [SerializeField] private List<Plant> plantPrefabs;
 
     private readonly List<Plant> plants = new();
     private bool ended;
@@ -104,7 +104,8 @@ public class Plants : MonoBehaviour
     private void SpawnPlant(bool first = false)
     {
         if (!filled || ended) return;
-        
+
+        var plantPrefab = plantPrefabs.Random();
         var plant = Instantiate(plantPrefab, FindSpot(), Quaternion.identity);
         var min = Mathf.Max(3, Mathf.CeilToInt(maxLength * 0.5f));
         plant.Setup(words.GetRandomWord(Random.Range(min, maxLength + 1)).ToUpper());

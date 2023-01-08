@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 6806919999572635859}
   - component: {fileID: 4294816172891757784}
   m_Layer: 0
-  m_Name: Plant
+  m_Name: Corn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
